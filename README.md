@@ -1,86 +1,264 @@
-# Offline-Video-Downloader
-# Media Downloader (Python Script)
+# 🎬 Offline Media Downloader (Python + yt-dlp)
 
-## 📌 What This Script Does
+## 📌 Overview
 
-This Python script allows you to download videos or extract audio (MP3) from multiple URLs in one go.
-You simply provide links in a `links.txt` file, choose a quality, and the script downloads everything automatically.
+This project is a simple yet powerful offline media downloader built using Python. It allows you to download videos or extract audio (MP3) from multiple URLs in one go using a single script.
 
----
-
-## ⚙️ Setup Instructions
-
-1. **Install Python (if not already installed)**
-   Make sure Python 3 is installed on your system.
-
-2. **Install yt-dlp**
-   This script depends on `yt-dlp` for downloading media:
-
-   ```
-   pip install yt-dlp
-   ```
-
-3. **Prepare Files**
-
-   * Place the Python script (e.g., `media_downloader.py`)
-   * Create a file named `links.txt`
-   * Ensure both are in the **same folder** 
+You provide links in a `links.txt` file, select your preferred quality, and the script handles everything — downloading, merging video/audio, and saving files locally.
 
 ---
 
-## 🧾 How to Use
+## ⚡ Core Features
 
-1. Open `links.txt`
+* 📥 **Batch Downloading**
+  Download multiple videos at once from a list of URLs
 
-2. Paste your media URLs (one per line), for example:
+* 🎥 **Video + Audio Merging**
+  Automatically merges best video and audio into `.mp4`
 
-   ```
-   https://example.com/video1
-   https://example.com/video2
-   ```
+* 🎧 **Audio Extraction (MP3)**
+  Convert videos into high-quality MP3 files
 
-3. Save the file
+* 📊 **Quality Selection**
+  Choose from available resolutions (480p and above)
 
-4. Run the script:
-
-   ```
-   python media_downloader.py
-   ```
-
-5. Choose a download option:
-
-   * Select a video quality (e.g., 480p, 720p, etc.)
-   * Or choose **Best Audio (MP3)**
-
-6. The script will:
-
-   * Download all links in the list
-   * Save them in the same folder
+* ⚡ **Automated Workflow**
+  One command runs everything
 
 ---
 
-## 📂 Output
+## 🧩 Tools & Technologies
 
-* Videos are saved as `.mp4`
-* Audio is saved as `.mp3`
-* Files are stored in the same directory as the script
+* **Python 3** – Core script logic
+* **yt-dlp** – Media downloading engine
+* **subprocess** – Executes yt-dlp commands
+* **json** – Parses video format data
+* **sys** – Handles program exits and errors
+
+All logic is implemented in the main script .
 
 ---
 
-## ⚠️ Important Notes
+# 🚀 FULL STEP-BY-STEP SETUP GUIDE
 
-* `links.txt` must exist, or the script will fail
-* Only resolutions **480p and above** are shown
-* Internet connection is required
+---
+
+## 🪟 Windows Installation Guide
+
+### ✅ Step 1: Install Python
+
+1. Download Python from the official website
+2. Run installer
+3. ✔️ Check **"Add Python to PATH"**
+4. Verify:
+
+```bash id="win-python-check"
+python --version
+```
+
+---
+
+### ✅ Step 2: Install yt-dlp
+
+```bash id="win-ytdlp-install"
+pip install yt-dlp
+```
+
+---
+
+### ✅ Step 3: (Optional but Recommended) Install FFmpeg
+
+FFmpeg is required for:
+
+* Merging video + audio
+* Converting to MP3
+
+1. Download FFmpeg
+2. Extract it
+3. Add `bin` folder to PATH
+
+Verify:
+
+```bash id="win-ffmpeg-check"
+ffmpeg -version
+```
+
+---
+
+### ✅ Step 4: Prepare Project Files
+
+Make sure both files are in the **same folder**:
+
+```text id="win-folder-structure"
+media_downloader.py
+links.txt
+```
+
+---
+
+### ✅ Step 5: Add Download Links
+
+Open `links.txt` and paste URLs:
+
+```text id="win-links-example"
+https://example.com/video1
+https://example.com/video2
+```
+
+---
+
+### ✅ Step 6: Run the Script
+
+```bash id="win-run"
+python media_downloader.py
+```
+
+---
+
+## 🐧 Linux Installation Guide
+
+### ✅ Step 1: Install Python & Pip
+
+```bash id="linux-python-install"
+sudo apt update
+sudo apt install python3 python3-pip
+```
+
+Verify:
+
+```bash id="linux-python-check"
+python3 --version
+```
+
+---
+
+### ✅ Step 2: Install yt-dlp
+
+```bash id="linux-ytdlp-install"
+pip3 install yt-dlp
+```
+
+---
+
+### ✅ Step 3: Install FFmpeg
+
+```bash id="linux-ffmpeg-install"
+sudo apt install ffmpeg
+```
+
+---
+
+### ✅ Step 4: Prepare Files
+
+```text id="linux-folder-structure"
+media_downloader.py
+links.txt
+```
+
+---
+
+### ✅ Step 5: Add Links
+
+```text id="linux-links-example"
+https://example.com/video1
+https://example.com/video2
+```
+
+---
+
+### ✅ Step 6: Run the Script
+
+```bash id="linux-run"
+python3 media_downloader.py
+```
+
+---
+
+# ▶️ HOW TO USE
+
+### 🧪 Step-by-Step Flow
+
+```text id="usage-flow"
+1. Add links to links.txt
+2. Run the script
+3. Select quality option
+4. Wait for downloads
+5. Files saved automatically
+```
+
+---
+
+### 📊 Example Output
+
+```bash id="example-output"
+Available Qualities:
+
+1. 480p
+2. 720p
+3. 1080p
+4. Best Audio (MP3)
+
+Choose quality:
+```
+
+---
+
+### 🎯 What Happens Next
+
+* Script downloads all links
+* Merges video + audio (if video selected)
+* Converts to MP3 (if audio selected)
+* Saves files in same folder
+
+---
+
+# 🔄 SYSTEM WORKFLOW
+
+```text id="workflow"
+Read links.txt
+   ↓
+Fetch available formats (yt-dlp)
+   ↓
+Display quality options
+   ↓
+User selects option
+   ↓
+Download all media
+   ↓
+Save files locally
+```
+
+---
+
+# ⚠️ IMPORTANT NOTES
+
+* `links.txt` must exist in the same folder
+* Only resolutions **≥ 480p** are shown
+* Internet is required for downloading media
 * Some websites may restrict downloads
-* Make sure you comply with content usage rights
+* Respect copyright and usage rights
 
 ---
 
-## ✅ Summary
+# 📂 OUTPUT
 
-* Add links → Run script → Pick quality → Downloads start automatically
+* 🎥 Videos → `.mp4`
+* 🎧 Audio → `.mp3`
+* 📁 Saved in current directory
 
 ---
 
-Enjoy fast and simple batch downloading 🚀
+# ✅ FINAL SUMMARY
+
+A simple and efficient media downloader that:
+
+* Handles multiple downloads at once
+* Lets you choose quality
+* Supports both video and audio
+* Works on Linux and Windows
+
+---
+
+🔥 Perfect for offline media collection and automation tasks.
+
+---
