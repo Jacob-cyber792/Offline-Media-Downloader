@@ -1,6 +1,4 @@
 # Offline-Video-Downloader
-offline-video-downloader
-
 # Media Downloader (Python Script)
 
 ## 📌 What This Script Does
